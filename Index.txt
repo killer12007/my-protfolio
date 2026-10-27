@@ -1,0 +1,14 @@
+
+Sr. No.	Name of Experiment
+1	To write a C program to perform array operations: Insert, Delete, Traverse, and Search.
+2	To write a C program to implement string operations: Concatenation, Comparison, and Substring Extraction.
+3	To develop stack implementation using arrays and linked lists with expression evaluation in C.
+4	To develop queue implementation using arrays and linked lists, including circular queue in C.
+5	To write a C program to perform Linear Search and Binary Search on datasets.
+6	To write a C program to implement Bubble Sort, Selection Sort, and Insertion Sort with time analysis.
+7	To develop C programs for Singly Linked List, Doubly Linked List, and Circular Linked List with insertion and deletion operations.
+8	To construct a binary tree and implement traversal methods: Preorder, Inorder, and Postorder in C.
+9	To implement graph representation using adjacency matrix and adjacency list, and perform BFS and DFS traversals in C.
+10	To create a hash table with collision resolution using chaining and open addressing techniques in C.
+11	To write a program in C++ to perform Linear Search and Binary Search on datasets.
+
