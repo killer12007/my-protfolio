@@ -1,0 +1,94 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <conio.h>
+
+#define MAX 100
+
+// Stack using Array
+typedef struct {
+    int arr[MAX];
+    int top;
+} ArrayStack;
+
+void initArrayStack(ArrayStack *s) {
+    s->top = -1;
+}
+int isFull(ArrayStack *s) {
+    return s->top == MAX - 1;
+}
+int isEmpty(ArrayStack *s) {
+    return s->top == -1;
+}
+void pushArray(ArrayStack *s, int val) {
+    if (isFull(s)) {
+        printf("Stack Overflow!\n");
+        return;
+    }
+    s->arr[++s->top] = val;
+}
+int popArray(ArrayStack *s) {
+    if (isEmpty(s)) {
+        printf("Stack Underflow!\n");
+        return -1;
+    }
+    return s->arr[s->top--];
+}
+
+// Stack using Linked List
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+Node* pushList(Node* top, int val) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = val;
+    newNode->next = top;
+    return newNode;
+}
+Node* popList(Node* top, int *val) {
+    Node* temp;
+    if (top == NULL) {
+        printf("Stack Underflow!\n");
+        return NULL;
+    }
+    *val = top->data;
+    temp = top;
+    top = top->next;
+    free(temp);
+    return top;
+}
+
+// Postfix Evaluation using Array Stack
+int evaluatePostfix(char exp[]) {
+    ArrayStack s;
+    int i;
+    initArrayStack(&s);
+    for (i = 0; exp[i]; i++) {
+        if (isdigit(exp[i])) {
+            pushArray(&s, exp[i] - '0');
+        } else {
+            int val2 = popArray(&s);
+            int val1 = popArray(&s);
+            switch (exp[i]) {
+                case '+': pushArray(&s, val1 + val2); break;
+                case '-': pushArray(&s, val1 - val2); break;
+                case '*': pushArray(&s, val1 * val2); break;
+                case '/': pushArray(&s, val1 / val2); break;
+            }
+        }
+    }
+    return popArray(&s);
+}
+
+int main() {
+    char exp[MAX];
+
+    clrscr();
+    printf("Enter a postfix expression: ");
+    scanf("%s", exp);
+    printf("Result of postfix evaluation: %d\n", evaluatePostfix(exp));
+    getch();
+    return 0;
+}

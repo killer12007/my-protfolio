@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+#define MAX 10
+
+// Graph using adjacency matrix
+int adjMatrix[MAX][MAX];
+int visited[MAX];
+
+// Queue for BFS
+int queue[MAX], front = -1, rear = -1;
+
+void enqueue(int v) {
+    if (rear == MAX - 1) return;
+    if (front == -1) front = 0;
+    queue[++rear] = v;
+}
+
+int dequeue() {
+    if (front == -1 || front > rear) return -1;
+    return queue[front++];
+}
+
+// BFS traversal
+void BFS(int start, int n) {
+    int i;
+    for (i = 0; i < n; i++) visited[i] = 0;
+
+    enqueue(start);
+    visited[start] = 1;
+
+    printf("BFS Traversal: ");
+    while (front <= rear) {
+        int v = dequeue();
+        printf("%d ", v);
+        for (i = 0; i < n; i++) {
+            if (adjMatrix[v][i] && !visited[i]) {
+                enqueue(i);
+                visited[i] = 1;
+            }
+        }
+    }
+    printf("\n");
+}
+
+// DFS traversal
+void DFS(int v, int n) {
+    int i;
+    visited[v] = 1;
+    printf("%d ", v);
+    for (i = 0; i < n; i++) {
+        if (adjMatrix[v][i] && !visited[i]) {
+            DFS(i, n);
+        }
+    }
+}
+
+// Main function
+int main() {
+    int n, edges, i, u, v;
+
+    clrscr();
+    printf("Enter number of vertices: ");
+    scanf("%d", &n);
+
+    printf("Enter number of edges: ");
+    scanf("%d", &edges);
+
+    for (i = 0; i < edges; i++) {
+        printf("Enter edge (u v): ");
+        scanf("%d %d", &u, &v);
+        adjMatrix[u][v] = 1;
+        adjMatrix[v][u] = 1; // for undirected graph
+    }
+
+    BFS(0, n);
+
+    for (i = 0; i < n; i++) visited[i] = 0;
+    printf("DFS Traversal: ");
+    DFS(0, n);
+    printf("\n");
+
+    getch();
+    return 0;
+}
