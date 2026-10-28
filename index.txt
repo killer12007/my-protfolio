@@ -1,0 +1,39 @@
+Title of the Experiment CO
+
+1]
+Verify the truth table of following logic gates:
+a. AND OR and NOT
+b. NAND, NOR, XOR and XNOR
+c. realization of basic gates using universal gates
+
+CO1
+
+2] Design and realize:-
+a. Half adder and verify its truth table.
+b. Full adder and verify its truth table.
+c. Half Subtractor and verify its truth table
+d. Full Subtractor and verify its truth table.
+
+CO2
+
+3] Design and analyze 1-bit and 4-bits comparator. CO2
+4] Study and realize the functional table of D flip-flop, SR flip-flop, T flip flop
+and JK flip-flop
+
+CO3
+5] Realize Boolean expressions using Multiplexer CO2
+6] Design sequence detector for the given sequence using Mealy/Moore Machine. CO3
+
+Software / Simulator Based Experiments
+Title of the Experiment CO
+
+7] Design half adder and full adder and write a VHDL code for same using
+dataflow style of modeling.
+
+CO4
+
+8] Write a VHDL code for 3-bit up-down counter using behavioral
+modeling style
+
+CO4
+9] Design 4-bits Shift Register using structural modeling style
